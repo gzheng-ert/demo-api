@@ -1,16 +1,14 @@
 package com.gz.demoapi;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
- 
+import org.springframework.context.annotation.ComponentScan;
+
 @SpringBootApplication
-public class DemoapiApplication extends SpringBootServletInitializer
-{
-    public static void main(String[] args) 
-    {
-        new DemoapiApplication().configure(new SpringApplicationBuilder(DemoapiApplication.class)).run(args);
-    }
-    
-    
+@ComponentScan("com.gz.demoapi")
+public class DemoapiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoapiApplication.class, args);
+	}
 }
