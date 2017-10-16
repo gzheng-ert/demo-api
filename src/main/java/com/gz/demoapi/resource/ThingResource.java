@@ -29,7 +29,7 @@ public class ThingResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getThing(@PathParam("id") final int id) throws AppException {
+    public Response getThing(@PathParam("id") final long id) {
         Thing thing = thingService.getThing(id);
         return Response.ok(thing).build();
     }
