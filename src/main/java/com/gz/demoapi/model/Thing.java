@@ -1,10 +1,14 @@
 package com.gz.demoapi.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Thing {
     private final long id;
     private final String name;
 
-    public Thing(long id, String name) {
+    @JsonCreator
+    public Thing(@JsonProperty("id") long id, @JsonProperty("name") String name) {
         this.id = id;
         this.name = name;
     }
