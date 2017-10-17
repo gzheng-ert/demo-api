@@ -8,9 +8,7 @@ import com.gz.demoapi.service.ThingService;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class ThingServiceImpl implements ThingService {
