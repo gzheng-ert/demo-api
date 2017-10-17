@@ -1,8 +1,10 @@
 package com.gz.demoapi;
 
 import com.gz.demoapi.model.Thing;
+import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -20,10 +22,11 @@ public class DemoapiApplicationTests {
 	private TestRestTemplate testRestTemplate;
 
 	@Test
-	public void testGetAllThings() {
+	public void testGetAllThings() throws JSONException {
 		ResponseEntity<String> entity = this.testRestTemplate.getForEntity("/things", String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		//todo: assert JSON response
+		String expected = "[{\"id\":2,\"name\":\"thing2\"},{\"id\":1,\"name\":\"thing1\"},{\"id\":3,\"name\":\"thing3\"},{\"id\":4,\"name\":\"thing4\"},{\"id\":5,\"name\":\"thing5\"}]";
+		JSONAssert.assertEquals(expected, entity.getBody(), false);
 	}
 
 	@Test
