@@ -1,6 +1,7 @@
 package com.gz.demoapi.config;
 
 import com.gz.demoapi.errorhandling.AppExecptionMapper;
+import com.gz.demoapi.errorhandling.ConstraintViolationExceptionMapper;
 import com.gz.demoapi.errorhandling.GenericExceptionMapper;
 import com.gz.demoapi.errorhandling.WebApplicationExceptionMapper;
 import com.gz.demoapi.resource.ThingResource;
@@ -15,5 +16,6 @@ public class JerseyConfig extends ResourceConfig {
         register(AppExecptionMapper.class);
         register(GenericExceptionMapper.class);
         register(WebApplicationExceptionMapper.class);
+        register(ConstraintViolationExceptionMapper.class);
     }
 }

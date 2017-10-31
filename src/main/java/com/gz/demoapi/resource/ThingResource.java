@@ -1,20 +1,22 @@
 package com.gz.demoapi.resource;
 
-import com.gz.demoapi.errorhandling.AppException;
 import com.gz.demoapi.model.Thing;
 import com.gz.demoapi.service.ThingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/things")
 public class ThingResource {
+
+    private static final Logger log = LoggerFactory.getLogger(ThingResource.class);
 
     @Inject
     private ThingService thingService;
@@ -24,6 +26,13 @@ public class ThingResource {
     public Response getThings() {
         List<Thing> things = thingService.getThings();
         return Response.ok(things).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createThing(@NotNull(message = "POST body cannot be null") @Valid Thing thing) {
+        log.info(thing.toString());
+        return Response.status(201).build();
     }
 
     @GET

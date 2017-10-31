@@ -3,8 +3,11 @@ package com.gz.demoapi.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotNull;
+
 public class Thing {
     private final long id;
+    @NotNull(message = "name cannot be null")
     private final String name;
 
     @JsonCreator
