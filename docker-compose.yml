@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  db:
+    container_name: db
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: demo_db
+      MYSQL_USER: mysql_app
+      MYSQL_PASSWORD: mysql_password
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - "/Users/gzhen320/docker_storage/mysql_datadir:/var/lib/mysql"
+    ports:
+      - 3306:3306
+  api:
+    image: gzheng/demoapi:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
