@@ -31,4 +31,9 @@ public class ThingServiceImpl implements ThingService {
         return thingDao.findAllThings();
     }
 
+    @Override
+    public Thing createThing(Thing newThing) {
+        return thingDao.createNewThing(newThing);
+    }
+
 }

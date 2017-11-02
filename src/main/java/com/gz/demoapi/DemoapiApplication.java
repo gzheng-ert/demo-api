@@ -36,7 +36,7 @@ public class DemoapiApplication implements CommandLineRunner {
 
 	private void initDb() {
 		log.info("Initializing database...");
-		jdbcTemplate.execute("DROP TABLE things IF EXISTS");
+		jdbcTemplate.execute("DROP TABLE IF EXISTS things ");
 		jdbcTemplate.execute("CREATE TABLE things(" +
 				"id SERIAL, " +
 				"name VARCHAR(255))");
