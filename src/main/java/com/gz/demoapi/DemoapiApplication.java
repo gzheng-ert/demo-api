@@ -27,10 +27,11 @@ public class DemoapiApplication implements CommandLineRunner {
 	public void run(String... strings) {
 
 		//initialize in-memory H2 DB
-		initDb();
+		//initDb();
 
 	}
 
+	/*
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -49,13 +50,13 @@ public class DemoapiApplication implements CommandLineRunner {
 		);
 		jdbcTemplate.batchUpdate("INSERT INTO things(name) VALUES(?)", things);
 
-		/*
 		log.info("Querying for customer records where name = 'thing2':");
 		jdbcTemplate.query(
 				"SELECT id, name FROM things WHERE name = ?",
 				new Object[] { "thing2" },
 				(rs, rowNum) -> new Thing(rs.getLong("id"), rs.getString("name"))
 		).forEach(thing -> log.info(thing.toString()));
-		*/
+
 	}
+	*/
 }
